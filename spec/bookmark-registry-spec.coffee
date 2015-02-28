@@ -1,11 +1,11 @@
-HatenaBookmarkRegistry = require '../lib/hatena-bookmark-registry'
+BookmarkRegistry = require '../lib/bookmark-registry'
 
-describe 'HatenaBookmarkRegistry', ->
+describe 'BookmarkRegistry', ->
   describe 'instance', ->
     registry = null
 
     beforeEach ->
-      registry = new HatenaBookmarkRegistry
+      registry = new BookmarkRegistry
 
     it 'should be defined "fetch"', ->
       expect(registry.fetch).toBeDefined()
