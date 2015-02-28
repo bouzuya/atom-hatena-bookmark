@@ -28,10 +28,11 @@ module.exports =
     @subscriptions.dispose()
 
   attach: ->
-    model = new HatenaBookmarkList(atom.config)
+    model = new HatenaBookmarkList
     item = atom.views.getView model
     @panel = atom.workspace.addLeftPanel item: item
     @panel.onDidDestroy -> model.destroy()
+    model.fetch()
 
   attached: ->
     @panel?
