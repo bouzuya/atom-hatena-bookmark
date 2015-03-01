@@ -1,3 +1,5 @@
+{CompositeDisposable} = require 'atom'
+
 class HatenaBookmarkListItemElement extends HTMLElement
   # public
   constructor: ->
@@ -8,6 +10,8 @@ class HatenaBookmarkListItemElement extends HTMLElement
 
   # public
   initialize: (@model) ->
+    @subscriptions = new CompositeDisposable
+    @subscriptions.add @model.onDidDestroy => @subscriptions.dispose()
     @classList.add 'bookmark'
     @appendChild @buildSpan(@model.bookmarkedAt, 'bookmarked-at')
     @appendChild @buildSpan(@model.title, 'title')
