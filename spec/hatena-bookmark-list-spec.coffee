@@ -1,7 +1,7 @@
 HatenaBookmarkList = require '../lib/hatena-bookmark-list'
 
 describe 'HatenaBookmarkList', ->
-  describe 'constructor', ->
+  describe 'instance', ->
     list = null
 
     beforeEach ->

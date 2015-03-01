@@ -1,11 +1,9 @@
 {Emitter} = require 'atom'
-BookmarkRegistry = require './bookmark-registry'
 
 module.exports = class HatenaBookmarkList
   # public
-  constructor: ->
+  constructor: (@registry) ->
     @emitter = new Emitter
-    @registry = new BookmarkRegistry
 
   # public
   destroy: ->
