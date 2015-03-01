@@ -3,17 +3,23 @@
 module.exports = class HatenaBookmarkList
   # public
   constructor: (@downloader) ->
+    @bookmarks = []
     @emitter = new Emitter
 
   # public
   destroy: ->
+    i.destroy() for i in @bookmarks
+    @bookmarks = []
     @emitter.emit 'did-destroy', @
     @emitter.dispose()
 
   # public
   fetch: ->
     @downloader.fetch()
-    .then @setBookmarks.bind @
+    .then (bookmarks) =>
+      i.destroy() for i in @bookmarks
+      @bookmarks = bookmarks
+      @emitter.emit 'did-set-bookmarks', bookmarks
 
   # public
   onDidDestroy: (callback) ->
@@ -22,6 +28,3 @@ module.exports = class HatenaBookmarkList
   # public
   onSetBookmarks: (callback) ->
     @emitter.on 'did-set-bookmarks', callback
-
-  setBookmarks: (bookmarks) ->
-    @emitter.emit 'did-set-bookmarks', bookmarks
