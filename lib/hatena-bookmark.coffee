@@ -30,6 +30,8 @@ module.exports =
     @subscriptions.add atom.commands.add 'atom-workspace',
       'hatena-bookmark:open-comment-url': => @openCommentUrl()
     @subscriptions.add atom.commands.add 'atom-workspace',
+      'hatena-bookmark:open-url': => @openUrl()
+    @subscriptions.add atom.commands.add 'atom-workspace',
       'hatena-bookmark:toggle': => @toggle()
     @subscriptions.add atom.views.addViewProvider HatenaBookmarkList, (model) ->
       new HatenaBookmarkListElement().initialize(model)
@@ -57,6 +59,9 @@ module.exports =
 
   openCommentUrl: ->
     @model.openCommentUrl()
+
+  openUrl: ->
+    @model.openUrl()
 
   toggle: ->
     if @attached()

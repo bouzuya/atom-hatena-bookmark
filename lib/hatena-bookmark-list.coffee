@@ -39,5 +39,9 @@ module.exports = class HatenaBookmarkList
   openCommentUrl: ->
     open i.bookmarkUrl for i in @bookmarks when i.selected
 
+  # public
+  openUrl: ->
+    open i.url for i in @bookmarks when i.selected
+
   format: (bookmark) ->
     "[#{bookmark.title}](#{bookmark.url})"

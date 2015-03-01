@@ -5,4 +5,7 @@
   ,
     label: 'open comment url'
     command: 'hatena-bookmark:open-comment-url'
+  ,
+    label: 'open url'
+    command: 'hatena-bookmark:open-url'
   ]
