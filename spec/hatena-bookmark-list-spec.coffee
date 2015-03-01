@@ -16,6 +16,9 @@ describe 'HatenaBookmarkList', ->
     it 'should be defined "fetch"', ->
       expect(list.fetch).toBeDefined()
 
+    it 'should be defined "insert"', ->
+      expect(list.insert).toBeDefined()
+
     it 'should be defined "onDidDestroy"', ->
       expect(list.onDidDestroy).toBeDefined()
 

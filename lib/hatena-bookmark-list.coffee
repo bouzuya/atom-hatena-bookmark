@@ -23,6 +23,11 @@ module.exports = class HatenaBookmarkList
       @emitter.emit 'did-set-bookmarks', bookmarks
 
   # public
+  insert: ->
+    text = (@format i for i in @bookmarks when i.selected).join '\n'
+    atom.workspace.getActiveTextEditor().insertText text
+
+  # public
   onDidDestroy: (callback) ->
     @emitter.on 'did-destroy', callback
 
@@ -33,3 +38,6 @@ module.exports = class HatenaBookmarkList
   # public
   open: ->
     open i.bookmarkUrl for i in @bookmarks when i.selected
+
+  format: (bookmark) ->
+    "[#{bookmark.title}](#{bookmark.url})"
