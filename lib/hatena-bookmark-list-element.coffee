@@ -27,7 +27,7 @@ class HatenaBookmarkListElement extends HTMLElement
       e = e.parentNode
 
   onClick: (e) ->
-    el = findBookmarkElement e.target
+    el = @findBookmarkElement e.target
     return unless el?
     bookmark = el.getModel()
     bookmark.insert()
