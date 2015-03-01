@@ -15,12 +15,6 @@ class HatenaBookmarkListElement extends HTMLElement
       @removeEventListener 'click', @onClick.bind(@)
     @
 
-  bookmarkClicked: (bookmarkElement) ->
-    title = bookmarkElement.dataset.title
-    url = bookmarkElement.dataset.bookmarkUrl
-    text = "[#{title}](#{url})"
-    atom.workspace.getActiveTextEditor().insertText text
-
   destroyed: ->
     @subscriptions.dispose() if @subscriptions?
     @parentNode?.removeChild @
@@ -32,8 +26,8 @@ class HatenaBookmarkListElement extends HTMLElement
       !el.classList.contains('bookmark')
     )
     return unless el?.classList.contains 'bookmark'
-    bookmarkElement = el
-    @bookmarkClicked bookmarkElement
+    bookmark = el.getModel()
+    bookmark.insert()
 
   setBookmarks: (bookmarks) ->
     @removeChild @firstChild while @firstChild
