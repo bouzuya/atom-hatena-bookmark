@@ -3,6 +3,10 @@ class HatenaBookmarkListItemElement extends HTMLElement
   constructor: ->
 
   # public
+  getModel: ->
+    @model
+
+  # public
   initialize: (@model) ->
     @classList.add 'bookmark'
     @appendChild @buildSpan(@model.bookmarkedAt, 'bookmarked-at')

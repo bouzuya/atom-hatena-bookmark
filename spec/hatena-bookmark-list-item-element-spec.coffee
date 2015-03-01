@@ -10,3 +10,6 @@ describe 'HatenaBookmarkListItemElement', ->
 
     it 'should be defined "initialize"', ->
       expect(element.initialize).toBeDefined()
+
+    it 'should be defined "getModel"', ->
+      expect(element.getModel).toBeDefined()
