@@ -1,3 +1,4 @@
+open = require 'open'
 {Emitter} = require 'atom'
 
 module.exports = class HatenaBookmarkList
@@ -28,3 +29,7 @@ module.exports = class HatenaBookmarkList
   # public
   onSetBookmarks: (callback) ->
     @emitter.on 'did-set-bookmarks', callback
+
+  # public
+  open: ->
+    open i.bookmarkUrl for i in @bookmarks when i.selected
