@@ -16,19 +16,12 @@ module.exports = class HatenaBookmarkList
     .then @setBookmarks.bind @
 
   # public
-  onAddBookmark: (callback) ->
-    @emitter.on 'did-add-bookmark', callback
-
-  # public
   onDidDestroy: (callback) ->
     @emitter.on 'did-destroy', callback
 
   # public
   onSetBookmarks: (callback) ->
     @emitter.on 'did-set-bookmarks', callback
-
-  addBookmark: (bookmark) ->
-    @emitter.emit 'did-add-bookmark', bookmark
 
   setBookmarks: (bookmarks) ->
     @emitter.emit 'did-set-bookmarks', bookmarks

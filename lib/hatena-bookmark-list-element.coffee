@@ -9,7 +9,6 @@ class HatenaBookmarkListElement extends HTMLElement
   initialize: (@model) ->
     @subscriptions = new CompositeDisposable
     @subscriptions.add @model.onSetBookmarks @setBookmarks.bind @
-    @subscriptions.add @model.onAddBookmark @addBookmark.bind @
     @subscriptions.add @model.onDidDestroy @destroyed.bind @
     @addEventListener 'click', @onClick.bind(@), true
     @subscriptions.add new Disposable =>
