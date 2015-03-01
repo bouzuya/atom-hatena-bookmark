@@ -11,6 +11,7 @@ module.exports = class Bookmark
     @url
   }) ->
     @emitter = new Emitter
+    @selected = false
 
   # public
   destroy: ->
@@ -23,5 +24,14 @@ module.exports = class Bookmark
     atom.workspace.getActiveTextEditor().insertText text
 
   # public
+  onDidChange: (callback) ->
+    @emitter.on 'did-change', callback
+
+  # public
   onDidDestroy: (callback) ->
     @emitter.on 'did-destroy', callback
+
+  # public
+  select: ->
+    @selected = !@selected
+    @emitter.emit 'did-change', @

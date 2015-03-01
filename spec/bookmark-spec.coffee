@@ -37,5 +37,11 @@ describe 'Bookmark', ->
     it 'should be defined "insert"', ->
       expect(bookmark.insert).toBeDefined()
 
+    it 'should be defined "onDidChange"', ->
+      expect(bookmark.onDidChange).toBeDefined()
+
     it 'should be defined "onDidDestroy"', ->
       expect(bookmark.onDidDestroy).toBeDefined()
+
+    it 'should be defined "select"', ->
+      expect(bookmark.select).toBeDefined()
