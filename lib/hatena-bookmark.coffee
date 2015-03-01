@@ -4,15 +4,21 @@ HatenaBookmarkList = require './hatena-bookmark-list'
 HatenaBookmarkListElement = require './hatena-bookmark-list-element'
 
 module.exports =
+  # public
   config:
     consumerKey:
       type: 'string'
+      default: ''
     consumerSecret:
       type: 'string'
+      default: ''
     token:
       type: 'string'
+      default: ''
     tokenSecret:
       type: 'string'
+      default: ''
+
   panel: null
   subscriptions: null
 
