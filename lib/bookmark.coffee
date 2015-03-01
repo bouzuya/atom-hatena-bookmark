@@ -19,11 +19,6 @@ module.exports = class Bookmark
     @emitter.dispose()
 
   # public
-  insert: ->
-    text = "[#{@title}](#{@url})"
-    atom.workspace.getActiveTextEditor().insertText text
-
-  # public
   onDidChange: (callback) ->
     @emitter.on 'did-change', callback
 
