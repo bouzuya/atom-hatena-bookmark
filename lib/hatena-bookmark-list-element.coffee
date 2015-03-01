@@ -19,13 +19,16 @@ class HatenaBookmarkListElement extends HTMLElement
     @subscriptions.dispose() if @subscriptions?
     @parentNode?.removeChild @
 
+  findBookmarkElement: (e) ->
+    while true
+      return null unless e?
+      return null if e.classList.contains 'hatena-bookmark-list'
+      return e if e.classList.contains 'bookmark'
+      e = e.parentNode
+
   onClick: (e) ->
-    el = e.target
-    el = el.parentNode while el? and (
-      el.classList.contains('hatena-bookmark-list') or \
-      !el.classList.contains('bookmark')
-    )
-    return unless el?.classList.contains 'bookmark'
+    el = findBookmarkElement e.target
+    return unless el?
     bookmark = el.getModel()
     bookmark.insert()
 
