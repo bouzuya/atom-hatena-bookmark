@@ -25,7 +25,7 @@ describe 'HatenaBookmarkList', ->
     it 'should be defined "onSetBookmarks"', ->
       expect(list.onSetBookmarks).toBeDefined()
 
-  describe 'destroy()', ->
+  describe '::destroy and ::onDidDestroy', ->
     list = null
 
     beforeEach ->
@@ -41,7 +41,7 @@ describe 'HatenaBookmarkList', ->
       runs ->
         expect(subscription).toHaveBeenCalledWith list
 
-  describe '::fetch', ->
+  describe '::fetch and ::onSetBookmarks', ->
     [list, bookmarks] = []
 
     describe 'when resolved', ->
