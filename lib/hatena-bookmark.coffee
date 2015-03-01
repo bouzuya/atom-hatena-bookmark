@@ -26,6 +26,8 @@ module.exports =
   activate: ->
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.commands.add 'atom-workspace',
+      'hatena-bookmark:insert': => @insert()
+    @subscriptions.add atom.commands.add 'atom-workspace',
       'hatena-bookmark:open': => @open()
     @subscriptions.add atom.commands.add 'atom-workspace',
       'hatena-bookmark:toggle': => @toggle()
@@ -49,6 +51,9 @@ module.exports =
   detach: ->
     @panel.destroy()
     @panel = null
+
+  insert: ->
+    @model.insert()
 
   open: ->
     @model.open()
