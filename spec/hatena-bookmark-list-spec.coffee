@@ -24,3 +24,20 @@ describe 'HatenaBookmarkList', ->
 
     it 'should be defined "onSetBookmarks"', ->
       expect(list.onSetBookmarks).toBeDefined()
+
+  describe 'destroy()', ->
+    list = null
+
+    beforeEach ->
+      registry =
+        fetch: ->
+          Promise.resolve()
+      list = new HatenaBookmarkList registry
+
+    it 'should call onDidDestroy subscription', ->
+      subscription = jasmine.createSpy 'destroyed'
+      list.onDidDestroy subscription
+      list.destroy()
+      runs ->
+        expect(subscription).toHaveBeenCalledWith list
+
