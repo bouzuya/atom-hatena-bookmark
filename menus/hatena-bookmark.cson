@@ -1,0 +1,8 @@
+'context-menu':
+  '[is="hatena-bookmark-list"]': [
+    label: 'insert'
+    command: 'hatena-bookmark:insert'
+  ,
+    label: 'open'
+    command: 'hatena-bookmark:open'
+  ]
