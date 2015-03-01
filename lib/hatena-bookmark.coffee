@@ -26,6 +26,8 @@ module.exports =
   activate: ->
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.commands.add 'atom-workspace',
+      'hatena-bookmark:open': => @open()
+    @subscriptions.add atom.commands.add 'atom-workspace',
       'hatena-bookmark:toggle': => @toggle()
     @subscriptions.add atom.views.addViewProvider HatenaBookmarkList, (model) ->
       new HatenaBookmarkListElement().initialize(model)
@@ -35,11 +37,11 @@ module.exports =
     @subscriptions.dispose()
 
   attach: ->
-    model = new HatenaBookmarkList new BookmarkDownloader
-    item = atom.views.getView model
+    @model = new HatenaBookmarkList new BookmarkDownloader
+    item = atom.views.getView @model
     @panel = atom.workspace.addLeftPanel item: item
-    @panel.onDidDestroy -> model.destroy()
-    model.fetch()
+    @panel.onDidDestroy => @model.destroy()
+    @model.fetch()
 
   attached: ->
     @panel?
@@ -47,6 +49,9 @@ module.exports =
   detach: ->
     @panel.destroy()
     @panel = null
+
+  open: ->
+    @model.open()
 
   toggle: ->
     if @attached()
