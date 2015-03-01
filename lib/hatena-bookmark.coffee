@@ -1,5 +1,5 @@
 {CompositeDisposable} = require 'atom'
-BookmarkRegistry = require './bookmark-registry'
+BookmarkDownloader = require './bookmark-downloader'
 HatenaBookmarkList = require './hatena-bookmark-list'
 HatenaBookmarkListElement = require './hatena-bookmark-list-element'
 
@@ -35,7 +35,7 @@ module.exports =
     @subscriptions.dispose()
 
   attach: ->
-    model = new HatenaBookmarkList new BookmarkRegistry
+    model = new HatenaBookmarkList new BookmarkDownloader
     item = atom.views.getView model
     @panel = atom.workspace.addLeftPanel item: item
     @panel.onDidDestroy -> model.destroy()

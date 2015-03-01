@@ -5,10 +5,10 @@ describe 'HatenaBookmarkList', ->
     list = null
 
     beforeEach ->
-      registry =
+      downloader =
         fetch: ->
           Promise.resolve()
-      list = new HatenaBookmarkList registry
+      list = new HatenaBookmarkList downloader
 
     it 'should be defined "destroy"', ->
       expect(list.destroy).toBeDefined()
@@ -26,10 +26,10 @@ describe 'HatenaBookmarkList', ->
     list = null
 
     beforeEach ->
-      registry =
+      downloader =
         fetch: ->
           Promise.resolve()
-      list = new HatenaBookmarkList registry
+      list = new HatenaBookmarkList downloader
 
     it 'should call onDidDestroy subscription', ->
       subscription = jasmine.createSpy 'destroyed'
@@ -44,10 +44,10 @@ describe 'HatenaBookmarkList', ->
     describe 'when resolved', ->
       beforeEach ->
         bookmarks = [1, 2, 3]
-        registry =
+        downloader =
           fetch: ->
-            Promise.resolve(bookmarks)
-        list = new HatenaBookmarkList registry
+            Promise.resolve bookmarks
+        list = new HatenaBookmarkList downloader
 
       it 'should call onSetBookmarks subscription', ->
         subscription = jasmine.createSpy 'set-bookmarks'
@@ -59,10 +59,10 @@ describe 'HatenaBookmarkList', ->
 
     describe 'when rejected', ->
       beforeEach ->
-        registry =
+        downloader =
           fetch: ->
             Promise.reject()
-        list = new HatenaBookmarkList registry
+        list = new HatenaBookmarkList downloader
 
       it 'should not call onSetBookmarks subscription', ->
         subscription = jasmine.createSpy 'set-bookmarks'

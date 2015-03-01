@@ -2,7 +2,7 @@
 
 module.exports = class HatenaBookmarkList
   # public
-  constructor: (@registry) ->
+  constructor: (@downloader) ->
     @emitter = new Emitter
 
   # public
@@ -12,7 +12,7 @@ module.exports = class HatenaBookmarkList
 
   # public
   fetch: ->
-    @registry.fetch()
+    @downloader.fetch()
     .then @setBookmarks.bind @
 
   # public

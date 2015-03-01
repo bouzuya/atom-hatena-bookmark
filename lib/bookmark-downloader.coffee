@@ -2,7 +2,7 @@ request = require 'request'
 {parseString} = require 'xml2js'
 Bookmark = require './bookmark'
 
-module.exports = class BookmarkRegistry
+module.exports = class BookmarkDownloader
   # public
   constructor: ->
 
