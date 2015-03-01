@@ -31,5 +31,11 @@ describe 'Bookmark', ->
     it 'should have "url"', ->
       expect(bookmark.url).toBe 'http://example.com/url'
 
+    it 'should be defined "destroy"', ->
+      expect(bookmark.destroy).toBeDefined()
+
     it 'should be defined "insert"', ->
       expect(bookmark.insert).toBeDefined()
+
+    it 'should be defined "onDidDestroy"', ->
+      expect(bookmark.onDidDestroy).toBeDefined()

@@ -1,3 +1,5 @@
+{Emitter} = require 'atom'
+
 module.exports = class Bookmark
   # public
   constructor: ({
@@ -8,7 +10,18 @@ module.exports = class Bookmark
     @title
     @url
   }) ->
+    @emitter = new Emitter
 
+  # public
+  destroy: ->
+    @emitter.emit 'did-destroy', @
+    @emitter.dispose()
+
+  # public
   insert: ->
     text = "[#{@title}](#{@url})"
     atom.workspace.getActiveTextEditor().insertText text
+
+  # public
+  onDidDestroy: (callback) ->
+    @emitter.on 'did-destroy', callback
