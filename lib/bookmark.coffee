@@ -8,3 +8,7 @@ module.exports = class Bookmark
     @title
     @url
   }) ->
+
+  insert: ->
+    text = "[#{@title}](#{@url})"
+    atom.workspace.getActiveTextEditor().insertText text
