@@ -11,6 +11,7 @@ class HatenaBookmarkListItemElement extends HTMLElement
   # public
   initialize: (@model) ->
     @subscriptions = new CompositeDisposable
+    @subscriptions.add @model.onDidChange @onDidChange.bind @
     @subscriptions.add @model.onDidDestroy => @subscriptions.dispose()
     @classList.add 'bookmark'
     @appendChild @buildSpan(@model.bookmarkedAt, 'bookmarked-at')
@@ -24,6 +25,12 @@ class HatenaBookmarkListItemElement extends HTMLElement
     span.classList.add.apply span.classList, classes.split(' ')
     span.appendChild document.createTextNode text
     span
+
+  onDidChange: (model) ->
+    if model.selected
+      @classList.add 'selected'
+    else
+      @classList.remove 'selected'
 
 module.exports = document.registerElement 'hatena-bookmark-list-item',
   prototype: HatenaBookmarkListItemElement.prototype
