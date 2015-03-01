@@ -30,7 +30,7 @@ class HatenaBookmarkListElement extends HTMLElement
     el = @findBookmarkElement e.target
     return unless el?
     bookmark = el.getModel()
-    bookmark.insert()
+    bookmark.select()
 
   setBookmarks: (bookmarks) ->
     @removeChild @firstChild while @firstChild
