@@ -4,6 +4,9 @@ Hatena Bookmark Panel for Atom (unofficial).
 
 # Commands
 
+- `hatena-bookmark:insert
+- `hatena-bookmark:open-comment-url
+- `hatena-bookmark:open-url
 - `hatena-bookmark:toggle`
 
 # Badges
