@@ -36,7 +36,7 @@ module.exports = class HatenaBookmarkList
     @emitter.on 'did-set-bookmarks', callback
 
   # public
-  open: ->
+  openCommentUrl: ->
     open i.bookmarkUrl for i in @bookmarks when i.selected
 
   format: (bookmark) ->

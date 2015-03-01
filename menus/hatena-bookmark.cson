@@ -3,6 +3,6 @@
     label: 'insert'
     command: 'hatena-bookmark:insert'
   ,
-    label: 'open'
-    command: 'hatena-bookmark:open'
+    label: 'open comment url'
+    command: 'hatena-bookmark:open-comment-url'
   ]

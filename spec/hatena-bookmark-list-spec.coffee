@@ -25,8 +25,8 @@ describe 'HatenaBookmarkList', ->
     it 'should be defined "onSetBookmarks"', ->
       expect(list.onSetBookmarks).toBeDefined()
 
-    it 'should be defined "open"', ->
-      expect(list.open).toBeDefined()
+    it 'should be defined "openCommentUrl"', ->
+      expect(list.openCommentUrl).toBeDefined()
 
   describe '::destroy and ::onDidDestroy', ->
     list = null
