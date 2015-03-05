@@ -1,5 +1,3 @@
-request = require 'request'
-{parseString} = require 'xml2js'
 Bookmark = require './bookmark'
 bookmark = require 'hatena-bookmark-api'
 
