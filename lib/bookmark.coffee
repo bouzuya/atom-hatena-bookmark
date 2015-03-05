@@ -12,6 +12,7 @@ module.exports = class Bookmark
   }) ->
     @emitter = new Emitter
     @selected = false
+    throw new Error('invalid bookmark url') unless @isBookmarkUrl @bookmarkUrl
 
   # public
   destroy: ->
@@ -30,3 +31,9 @@ module.exports = class Bookmark
   select: ->
     @selected = !@selected
     @emitter.emit 'did-change', @
+
+  # http://b.hatena.ne.jp/{userId}/{date}#bookmark-{entryId}
+  isBookmarkUrl: (url) ->
+    p = new RegExp '^https?://b.hatena.ne.jp/[^/]+/\\d{8}#bookmark-\\d+$'
+    url.match p
+

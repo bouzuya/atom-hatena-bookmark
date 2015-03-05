@@ -7,7 +7,7 @@ describe 'Bookmark', ->
     beforeEach ->
       bookmark = new Bookmark
         bookmarkedAt: '2015-03-01T00:00:00Z'
-        bookmarkUrl: 'http://example.com/bookmark/url'
+        bookmarkUrl: 'http://b.hatena.ne.jp/bouzuya/20150101#bookmark-12345'
         comment: 'no comment'
         commentUrl: 'http://example.com/comment/url'
         title: 'title'
@@ -17,7 +17,8 @@ describe 'Bookmark', ->
       expect(bookmark.bookmarkedAt).toBe '2015-03-01T00:00:00Z'
 
     it 'should have "bookmarkUrl"', ->
-      expect(bookmark.bookmarkUrl).toBe 'http://example.com/bookmark/url'
+      bookmarkUrl = 'http://b.hatena.ne.jp/bouzuya/20150101#bookmark-12345'
+      expect(bookmark.bookmarkUrl).toBe bookmarkUrl
 
     it 'should have "comment"', ->
       expect(bookmark.comment).toBe 'no comment'
