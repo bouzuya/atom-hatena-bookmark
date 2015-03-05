@@ -19,12 +19,30 @@ ul[is="hatena-bookmark-list"] {
     text-overflow: ellipsis;
     line-height: 25px;
 
+    border-bottom: 1px solid @base-border-color;
+    position: relative;
+    height: 48px;
+
     .bookmarked-at {
-      padding-right: 8px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 4px 4px 0 4px;
+      font-size: 12px;
+      height: 16px;
+      line-height: 16px;
+      color: @text-color-ignored;
     }
 
     .title {
-
+      position: absolute;
+      top: 16px;
+      left: 0;
+      padding: 0 4px 4px 4px;
+      font-size: 16px;
+      height: 32px;
+      line-height: 32px;
+      color: @text-color;
     }
   }
 }
