@@ -53,10 +53,10 @@ describe 'HatenaBookmarkList', ->
     describe 'when resolved', ->
       beforeEach ->
         bookmarks = [1, 2, 3]
-        downloader =
-          fetch: ->
+        repository =
+          getPage: ->
             Promise.resolve bookmarks
-        list = new HatenaBookmarkList downloader
+        list = new HatenaBookmarkList repository
 
       it 'should call onSetBookmarks subscription', ->
         subscription = jasmine.createSpy 'set-bookmarks'
@@ -64,14 +64,14 @@ describe 'HatenaBookmarkList', ->
           list.onSetBookmarks subscription
           list.fetch()
         runs ->
-          expect(subscription).toHaveBeenCalledWith bookmarks
+          expect(subscription).toHaveBeenCalled()
 
     describe 'when rejected', ->
       beforeEach ->
-        downloader =
-          fetch: ->
+        repository =
+          getPage: ->
             Promise.reject()
-        list = new HatenaBookmarkList downloader
+        list = new HatenaBookmarkList repository
 
       it 'should not call onSetBookmarks subscription', ->
         subscription = jasmine.createSpy 'set-bookmarks'

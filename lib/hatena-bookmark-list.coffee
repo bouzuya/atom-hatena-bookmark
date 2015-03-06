@@ -1,10 +1,12 @@
 open = require 'open'
 {Emitter} = require 'atom'
+HatenaBookmarkListItem = require './hatena-bookmark-list-item'
 
 module.exports = class HatenaBookmarkList
   # public
-  constructor: (@downloader) ->
+  constructor: (@repository) ->
     @bookmarks = []
+    @offset = 0
     @emitter = new Emitter
 
   # public
@@ -16,11 +18,11 @@ module.exports = class HatenaBookmarkList
 
   # public
   fetch: ->
-    @downloader.fetch()
+    @repository.getPage @offset
     .then (bookmarks) =>
       i.destroy() for i in @bookmarks
-      @bookmarks = bookmarks
-      @emitter.emit 'did-set-bookmarks', bookmarks
+      @bookmarks = (new HatenaBookmarkListItem(i) for i in bookmarks)
+      @emitter.emit 'did-set-bookmarks', @bookmarks
 
   # public
   insert: ->
