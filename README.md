@@ -7,6 +7,8 @@ Hatena Bookmark Panel for Atom (unofficial).
 - `hatena-bookmark:insert`
 - `hatena-bookmark:open-comment-url`
 - `hatena-bookmark:open-url`
+- `hatena-bookmark:next-page`
+- `hatena-bookmark:previous-page`
 - `hatena-bookmark:toggle`
 
 # Badges
