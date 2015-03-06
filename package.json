@@ -1,7 +1,7 @@
 {
   "name": "hatena-bookmark",
   "main": "./lib/hatena-bookmark",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Hatena Bookmark Panel for Atom (unofficial)",
   "repository": "https://github.com/bouzuya/atom-hatena-bookmark",
   "license": "MIT",
