@@ -6,14 +6,14 @@ module.exports = class BookmarkDownloader
   constructor: ->
 
   # public
-  fetch: ->
+  fetch: (offset = 0)->
     client = bookmark
       type: 'oauth'
       consumerKey: atom.config.get 'hatena-bookmark.consumerKey'
       consumerSecret: atom.config.get 'hatena-bookmark.consumerSecret'
       token: atom.config.get 'hatena-bookmark.token'
       tokenSecret: atom.config.get 'hatena-bookmark.tokenSecret'
-    client.index({})
+    client.index({ of: offset })
     .then (res) ->
       res.feed.entry.map (i) ->
         url = i.link.filter((j) -> j.$.rel is 'related')[0]?.$.href
