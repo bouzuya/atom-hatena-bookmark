@@ -31,6 +31,12 @@ describe 'HatenaBookmarkList', ->
     it 'should be defined "openUrl"', ->
       expect(list.openUrl).toBeDefined()
 
+    it 'should be defined "nextPage"', ->
+      expect(list.nextPage).toBeDefined()
+
+    it 'should be defined "previousPage"', ->
+      expect(list.previousPage).toBeDefined()
+
   describe '::destroy and ::onDidDestroy', ->
     list = null
 

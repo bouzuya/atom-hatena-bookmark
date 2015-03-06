@@ -34,6 +34,11 @@ module.exports =
       'hatena-bookmark:open-url': => @openUrl()
     @subscriptions.add atom.commands.add 'atom-workspace',
       'hatena-bookmark:toggle': => @toggle()
+    @subscriptions.add atom.commands.add 'atom-workspace',
+      'hatena-bookmark:next-page': => @model?.nextPage()
+    @subscriptions.add atom.commands.add 'atom-workspace',
+      'hatena-bookmark:previous-page': => @model?.previousPage()
+
     @subscriptions.add atom.views.addViewProvider HatenaBookmarkList, (model) ->
       new HatenaBookmarkListElement().initialize(model)
 

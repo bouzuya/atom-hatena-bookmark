@@ -45,5 +45,16 @@ module.exports = class HatenaBookmarkList
   openUrl: ->
     open i.url for i in @bookmarks when i.selected
 
+  # public
+  nextPage: ->
+    @offset += 20
+    @fetch()
+
+  # public
+  previousPage: ->
+    @offset -= 20
+    @offset = 0 if @offset < 0
+    @fetch()
+
   format: (bookmark) ->
     "[#{bookmark.title}](#{bookmark.url})"
